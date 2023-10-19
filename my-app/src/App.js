@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import './App.css';
 import Newton from './Interpolation/Newton';
-import Bisection from './root _of_equations/Bisection';
+import Bisection from './Root_of_equations/Bisection';
 import { NavBar } from './NavBar';
 
 

@@ -1,16 +1,18 @@
-import { React,Component } from"react";
-import { Button,From } from"react-bootstrap";
-import { evaluate } from"mathjs";
+import {React,Component} from "react";
+import { Button,From } from "react-bootstrap";
+import { evaluate } from "mathjs";
+
+
 
 const mainDiv = {
-    display: "flex",
-    width: "100%",
-    margin: "0 auto"
+    display:"flex",
+    width:"100%",
+    margin:"0 auto"
 }
 
-const Div =  {
-    width: "100%",
-    margin: "0 auto"
+const Div = {
+    width:"100%",
+    margin:"0 auto"
 }
 
 class Bisection extends Component{

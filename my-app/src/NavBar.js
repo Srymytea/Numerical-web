@@ -39,8 +39,9 @@ export const NavBar = () =>{
                       <NavDropdown
                       title="Root_of_equation"
                       id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                        <NavDropdown.Item href></NavDropdown.Item>
+                        <NavDropdown.Item href="/Bisection">Bisection</NavDropdown.Item>
                         <br/>
+                        <NavDropdown.Divider />
                       </NavDropdown>
 
                     </Nav>
