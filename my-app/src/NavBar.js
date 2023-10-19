@@ -28,12 +28,21 @@ export const NavBar = () =>{
                         <NavDropdown.Item href="/Lagrange">Lagrange</NavDropdown.Item>
                         <NavDropdown.Divider />
                       </NavDropdown>
+
                       <NavDropdown
                         title="Guass"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
                           <NavDropdown.Item href></NavDropdown.Item>
                           <br/>
                       </NavDropdown>
+
+                      <NavDropdown
+                      title="Root_of_equation"
+                      id={`offcanvasNavbarDropdown-expand-${expand}`}>
+                        <NavDropdown.Item href></NavDropdown.Item>
+                        <br/>
+                      </NavDropdown>
+
                     </Nav>
                     
                   </Offcanvas.Body>
