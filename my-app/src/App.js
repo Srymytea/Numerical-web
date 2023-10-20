@@ -17,11 +17,11 @@ function App(){
         <NavBar/>
         <Routes>
 
-            <Route path='/Graphical' elemnt={<Graphical/>}/>
+            <Route path='/Graphical' element={<Graphical/>}/>
             <Route path='/Bisection' element={<Bisection/>}/>
 
-            <Route path='/Newton' elements={<Lagrange/>}/>
-            <Route path='/Lagrange' elements={<Lagrange/>}/>
+            <Route path='/Newton' element={<Newton/>}/>
+            <Route path='/Lagrange' element={<Lagrange/>}/>
         
         </Routes>
         </BrowserRouter>
