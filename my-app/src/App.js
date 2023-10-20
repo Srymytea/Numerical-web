@@ -20,7 +20,7 @@ function App(){
             <Route path='/Graphical' elemnt={<Graphical/>}/>
             <Route path='/Bisection' element={<Bisection/>}/>
 
-            
+            <Route path='/Newton' elements={<Lagrange/>}/>
             <Route path='/Lagrange' elements={<Lagrange/>}/>
         
         </Routes>
