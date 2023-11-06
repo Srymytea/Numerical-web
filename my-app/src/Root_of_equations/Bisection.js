@@ -16,33 +16,34 @@ const Div = {
 class Bisection extends Component{
 
     Cal_Bisection(){
-        var XR = document.getElementById("input_xr").value
-        var XL = document.getElementById("input_xl").value;
+        var XR = Number(document.getElementById("input_xr").value);
+        var XL = Number(document.getElementById("input_xl").value);
         var equation = document.getElementById("Equation").value;
         var xr = parseFloat(XR);
         var xl = parseFloat(XL);
         var scope;
-        var xm, fxl, fxr, fxm;
-        var epsilon = 0.000001;
+        var xm, yl, yr, ym;
+        var itermax = 50;
+        var iter = 0;
     
         do{
             xm = (xl + xr) / 2;
             scope = { x:xr };
-            fxr = evaluate(equation, scope);
+            yr = evaluate(equation, scope);
             scope = { x:xm };
-            fxm = evaluate(equation, scope);
-            
+            ym = evaluate(equation, scope);
+            iter++;
 
-            if(fxm * fxr < 0){
+            if(ym * yr < 0){
                 xl = xm;
             }
-            else if(fxm * fxr > 0){
+            else if(ym * yr > 0){
                 xr = xm;
             }
         }
-        while(Math.abs(fxm) >= epsilon);
+        while(Math.abs(ym) >= 0.000001);
 
-        document.getElementById("answer").innerHTML=xm;
+        document.getElementById("ans").innerHTML=xm;
     }
 
 
@@ -64,7 +65,7 @@ class Bisection extends Component{
 
                         <Button onClick={this.Cal_Bisection} style={{width:"10", margin:"0 auto"}}> Calculate </Button>
                         <br/><br/>
-                        <h id="answer"></h>
+                        <h id="ans"></h>
                     </div>
                 </div>
             </div>
