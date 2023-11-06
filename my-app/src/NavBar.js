@@ -28,6 +28,11 @@ export const NavBar = () =>{
                         <NavDropdown.Item href="/Graphical">Graphical</NavDropdown.Item>
                         <br/>
                         <NavDropdown.Item href="/Bisection">Bisection</NavDropdown.Item>
+                        <br/>
+                        <NavDropdown.Item href="/Onepoint">Onepoint</NavDropdown.Item>
+                        <br/>
+                        <NavDropdown.Item href="/Secant">Secant</NavDropdown.Item>
+                        <br/>
                         <NavDropdown.Divider />
                         
                       </NavDropdown>
