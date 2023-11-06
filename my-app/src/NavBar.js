@@ -8,7 +8,7 @@ export const NavBar = () =>{
           {[false].map((expand) => (
             <Navbar key={expand} bg="dark"variant="dark" expand={expand} className="mb-3">
               <Container fluid>
-                <Navbar.Brand >Numer Project</Navbar.Brand>
+              
                 
                 
 
@@ -51,7 +51,7 @@ export const NavBar = () =>{
                       <NavDropdown
                         title="Guass"
                         id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                          <NavDropdown.Item href></NavDropdown.Item>
+                          <NavDropdown.Item href="/Gauss_Elimination">Gauss Elimination</NavDropdown.Item>
                           <br/>
                       </NavDropdown>
                     </Nav>
