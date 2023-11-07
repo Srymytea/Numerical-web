@@ -107,6 +107,8 @@ class Lagrange extends Component{
             <div>
                 <div style={mainDiv}>
                     <div style={Div}>
+                    <div className="graph">
+                        
                         <h1>Lagrange Interpolation</h1>
                         <br/>
 
@@ -176,7 +178,7 @@ class Lagrange extends Component{
 
                         <br/><br/>
 
-                    
+                    </div>
                     </div>
                 </div>
             </div>

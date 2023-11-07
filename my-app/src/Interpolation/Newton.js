@@ -94,6 +94,7 @@ class Newton extends Component{
             <div>
                <div style={mainDiv}>
                    <div  style={Div} >
+                   <div className="graph">
                         <h1> Newton Interpolation </h1>
                         <br></br>
                             <div>
@@ -120,7 +121,7 @@ class Newton extends Component{
                                 <h style={{color:'green'}} id="Polynomial">  </h>
                             </div>
                         
-
+                        </div>
                     </div>
                 </div>
             </div>

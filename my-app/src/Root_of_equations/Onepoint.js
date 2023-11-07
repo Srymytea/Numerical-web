@@ -36,6 +36,7 @@ class Onepoint extends Component{
             <div>
                 <div style={mainDiv}>
                     <div style={Div}>
+                    <div className="graph">
                         <h1>One Point Iteration</h1>
                         <br/><br/>
 
@@ -45,9 +46,12 @@ class Onepoint extends Component{
                             <Form.Control id="input_x0" type="number" placeholder="input X0" style={{width:"10%", margin:"0 auto"}}></Form.Control>
                         </div>
                         <br/>
+                        </div>
 
+                        <div className="button">
                         <Button onClick={this.Cal_Onepoint} style={{width:"10", margin:"0 auto"}}> Calculate </Button>
                         <br/><br/>
+                        </div>
                         <h id="ans"></h>
                     </div>
                 </div>

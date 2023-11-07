@@ -108,6 +108,7 @@ class Gauss_elimination extends Component{
             <div>
                 <div style={mainDiv}>
                     <div style={Div}>
+                    <div className="graph">
                         <h1>Gauss_elimination</h1>
                         <br/>
                         <div>
@@ -137,6 +138,7 @@ class Gauss_elimination extends Component{
                         <br/><br/>
 
                         <div id="area_b" style={{marginBottom: "10%"}}>
+                        </div>
                         </div>
                     </div>
                 </div>

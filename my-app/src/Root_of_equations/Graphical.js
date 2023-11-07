@@ -1,6 +1,7 @@
 import {React, Component} from"react";
 import {Button, Form} from"react-bootstrap";
 import {evaluate} from"mathjs";
+import './graph.css';
 
 const mainDiv = {
     display:"flex",
@@ -55,20 +56,22 @@ class Graphical extends Component{
             <div>
                 <div style={mainDiv}>
                     <div style={Div}>
+                        <div className="graph">
                         <h1>Graphical</h1>
                         <br/><br/>
-
-                        <div>
+                        </div>
+                        <div className="headg">
                             <Form.Control id="Equation" type="text" placeholder="input Equation" style={{width:"10%", margin:"0 auto"}}></Form.Control>
                             <br/>
                             <Form.Control id="input_start" type="number" placeholder="input start" style={{width:"10%", margin:"0 auto"}}></Form.Control>
                             <Form.Control id="input_end" type="number" placeholder="input end" style={{width:"10%", margin:"0 auto"}}></Form.Control>
                         </div>
                         <br/>
-
+                        <div className="button">
                         <Button onClick={this.Cal_Graphical} style={{width:"10", margin:"0 auto"}}> Calculate </Button>
                         <br/><br/>
                         <h id="ans"></h>
+                        </div>
                     </div>
                 </div>
             </div>

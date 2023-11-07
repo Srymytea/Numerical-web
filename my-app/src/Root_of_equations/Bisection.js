@@ -44,6 +44,12 @@ class Bisection extends Component{
         while(Math.abs(ym) >= 0.000001);
 
         document.getElementById("ans").innerHTML=xm;
+
+        // scope = { x:xm };
+        // var value = evaluate(equation, scope);
+        // document.getElementById("val").innerHTML=value;
+        
+
     }
 
 
@@ -52,6 +58,7 @@ class Bisection extends Component{
             <div>
                 <div style={mainDiv}>
                     <div style={Div}>
+                    <div className="graph">
                         <h1>Bisection</h1>
                         <br/><br/>
 
@@ -62,10 +69,19 @@ class Bisection extends Component{
                             <Form.Control id="input_xr" type="number" placeholder="input XR" style={{width:"10%", margin:"0 auto"}}></Form.Control>
                         </div>
                         <br/>
+                        </div>
 
+                        <div className="button">
                         <Button onClick={this.Cal_Bisection} style={{width:"10", margin:"0 auto"}}> Calculate </Button>
                         <br/><br/>
                         <h id="ans"></h>
+                        <br/><br/>
+                        
+                        <h id="val"></h>
+                        <br/><br/>
+
+
+                        </div>
                     </div>
                 </div>
             </div>

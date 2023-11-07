@@ -15,10 +15,12 @@
   flex: 70px;
   
 }
+
 .App-sidebar {
   height: 100%;
-  width: 200px;
+  width: 100%;
   background-color: #fac3a5;
+  text-align: left;
 }
 .App-sidebarList {
   height: auto;
@@ -37,6 +39,8 @@
   justify-content: center;
   align-items: center;
   flex: 70px;
+  text-align: left;
+  margin: 20px;
 }
 
 .App-logo {
@@ -63,6 +67,9 @@
 
 .App-link {
   color: black;
+}
+.g{
+  text-align: center;
 }
 
 @keyframes App-logo-spin {

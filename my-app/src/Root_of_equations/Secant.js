@@ -40,6 +40,7 @@ class Secant extends Component{
             <div>
                 <div style={mainDiv}>
                     <div style={Div}>
+                    <div className="graph">
                         <h1>Secant</h1>
                         <br/><br/>
 
@@ -49,10 +50,13 @@ class Secant extends Component{
                             <Form.Control id="input_x0" type="number" placeholder="input X0" style={{width:"10%", margin:"0 auto"}}></Form.Control>
                         </div>
                         <br/>
+                        
 
+                        
                         <Button onClick={this.Cal_Secant} style={{width:"10", margin:"0 auto"}}> Calculate </Button>
                         <br/><br/>
                         <h id="ans"></h>
+                        </div>
                     </div>
                 </div>
             </div>
