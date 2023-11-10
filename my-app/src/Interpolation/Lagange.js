@@ -3,8 +3,6 @@ import { Button, Container, Form, Table } from "react-bootstrap";
 import ReactApexChart from "react-apexcharts";
 
 
-
-
 const Lagrange =()=>{
     const data = [
         {index: 1, X:0, Y:9.81},
