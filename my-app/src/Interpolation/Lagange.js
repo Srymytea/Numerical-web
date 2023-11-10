@@ -1,191 +1,195 @@
-import {React,Component} from "react";
-import { Button } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
+import { useState } from "react"
+import { Button, Container, Form, Table } from "react-bootstrap";
+import ReactApexChart from "react-apexcharts";
 
-const mainDiv = {
-    display:"flex",
-    width:"100%",
-    margin:"0 auto"
-}
 
-const Div = {
-    width:"100%",
-    margin:"0 auto"
-}
 
-class Lagrange extends Component{
 
-    
-    constructor(){
-        super();
-        let i = 0;
-        // document.getElementById("arr_x").innerHTML=i;
-    }
+const Lagrange =()=>{
+    const data = [
+        {index: 1, X:0, Y:9.81},
+        {index: 2, X:20000,Y:9.7487},
+        {index: 3, X:40000, Y:9.6879},
+        {index: 4, X:60000, Y:9.6879},
+        {index: 5, X:80000,Y:9.5682}
+    ]
+    const chartOptions = {
+        chart: {
+          id: "lagrange-chart",
+        },
+        xaxis: {
+          categories: data.map((element) => element.X),
+        },
+      };
+    const series = [
+        {
+          name: "Y",
+          data: data.map((element) => element.Y),
+        },
+      ];
+    const data2 =[];
 
-    Cal_Linear_interpolate(){
-        var x =[0,20000,40000,60000,80000];
-        var y = [9.8100,9.7487,9.6879,9.6879,9.5682] ;
-        var xvalue = 42235;
-        var Linear_L = [];
-        var Linear_ans;
-        var start = document.getElementById("Linear_Inputp1").value;
-        var end = document.getElementById("Linear_Inputp2").value;
-        var p1 = Number(start);
-        var p2 = Number(end);
-
-        if(p1 !== 0 || p2 !== 0){
-            const Linear_cal = (p1,p2) =>{
-                Linear_L[0] = ((x[p2] - xvalue) / (x[p2] - x[p1])) * y[p1];
-                Linear_L[1] = ((x[p1] - xvalue) / (x[p1] - x[p2])) * y[p2];
-                Linear_ans = Linear_L[0] + Linear_L[1];
-            }
-            Linear_cal(p1,p2);
-            document.getElementById("Linear").innerHTML=Linear_ans;
-        }
-    }
-
-    Cal_Quadtic_interpolate(){
-        var x =[0,20000,40000,60000,80000];
-        var y = [9.8100,9.7487,9.6879,9.6879,9.5682] ;
-        var xvalue = 42235;
-        var Quadratic_L = [];
-        var Quadratic_ans;
-        var x1 = document.getElementById("Quadtic_Inputp1").value;
-        var x2 = document.getElementById("Quadtic_Inputp2").value;
-        var x3 = document.getElementById("Quadtic_Inputp3").value;
-        var p1 = Number(x1);
-        var p2 = Number(x2);
-        var p3 = Number(x3);
-
-        if(p2 > p1 && p3 > p2){ // input 1 , 2 , 3
-            const Quadratic_cal = (p1,p2,p3) =>{
-                Quadratic_L[0] = ((x[p2] - xvalue) / (x[p2] - x[p1]) * (x[p3] - xvalue) / (x[p3] - x[p1])) * y[p1];
-                Quadratic_L[1] = ((x[p1] - xvalue) / (x[p1] - x[p2]) * (x[p3] - xvalue) / (x[p3] - x[p2])) * y[p2];
-                Quadratic_L[2] = ((x[p1] - xvalue) / (x[p1] - x[p3]) * (x[p2] - xvalue) / (x[p2] - x[p3])) * y[p3];
-                Quadratic_ans = Quadratic_L[0] + Quadratic_L[1] + Quadratic_L[2];
-            }
-            Quadratic_cal(p1,p2,p3);
-            document.getElementById("Quadratic").innerHTML=Quadratic_ans;
-        }
-    }
-
-    Cal_Polynomial_interpolate(){
-        var x =[0,20000,40000,60000,80000];
-        var y = [9.8100,9.7487,9.6879,9.6879,9.5682] ;
-        var xvalue = 42235;
-        var Polynomial_L = [];
-        var Polynomial_ans = 0;
-        var start = document.getElementById("Polynomial_Inputstart").value;
-        var end = document.getElementById("Polynomial_Inputend").value;
-        var s = Number(start);
-        var e = Number(end);
-
-        if(s !== 0 || e !== 0){
-            const Polynomial_cal = (start, end) =>{
-                const n = end - start;
-
-                for(let i = start; i<=n; i++){
-                    var term = 1;
-                    for(let j = start; j<=n; j++){
-                        if(j === i){
-                            continue;
-                        }
-                        term *= (x[j] - xvalue) / (x[j] - x[i]);
-                    }
-                    Polynomial_L[i] = term * y[i];
-                }
-                for(let i = 0; i<=n; i++){
-                    Polynomial_ans += Polynomial_L[i];
-                }
-            }
-            Polynomial_cal(s,e);
-            document.getElementById("Polynomial").innerHTML=Polynomial_ans;
-        }
-    }
-
-    render(){
-        
+    const print = () =>{
         return(
-            <div>
-                <div style={mainDiv}>
-                    <div style={Div}>
-                    <div className="graph">
-                        
-                        <h1>Lagrange Interpolation</h1>
-                        <br/>
-
-                        <div>
-                            
-                            <h>x = </h>
-                            <h style={{color:'green'}} id="arr_x">  </h>
-                        </div>
-
-                        <br/>
-
-                        <div>
-                            <Form.Control id="Linear_Inputp1" type="number" placeholder="input x1" style={{width:"20%", margin:"0 auto"}}></Form.Control>
-                            <br/>
-                            <Form.Control id="Linear_Inputp2" type="number" placeholder="input x2" style={{width:"20%", margin:"0 auto"}}></Form.Control>
-                            <br/><br/>
-                        </div>
-                        <div>
-                            <Button onClick={this.Cal_Linear_interpolate} style={{width:"7%", margin:"0 auto"}}>
-                                Calculate
-                            </Button>
-                            <br/><br/>
-
-                            <h>Linear = </h>
-                            <h style={{color:'green'}} id="Linear">  </h>
-                        </div>
-
-                       
-
-                        <br/><br/>
-
-                        <div>
-                            <Form.Control id="Quadtic_Inputp1" type="number" placeholder="input x1" style={{width:"20%", margin:"0 auto"}}></Form.Control>
-                            <br/>
-                            <Form.Control id="Quadtic_Inputp2" type="number" placeholder="input x2" style={{width:"20%", margin:"0 auto"}}></Form.Control>
-                            <br/>
-                            <Form.Control id="Quadtic_Inputp3" type="number" placeholder="input x3" style={{width:"20%", margin:"0 auto"}}></Form.Control>
-                            <br/><br/>
-                        </div>
-                        <div>
-                            <Button onClick={this.Cal_Quadtic_interpolate} style={{width:"7%", margin:"0 auto"}}>
-                                Calculate
-                            </Button>
-                            <br/><br/>
-
-                            <h>Quadratic = </h>
-                            <h style={{color:'green'}} id="Quadratic">  </h>
-                        </div>
-                        
-                        <br/><br/>
-
-                        <div>
-                            <Form.Control id="Polynomial_Inputstart" type="number" placeholder="input start" style={{width:"20%", margin:"0 auto"}}></Form.Control>
-                            <br/>
-                            <Form.Control id="Polynomial_Inputend" type="number" placeholder="input end" style={{width:"20%", margin:"0 auto"}}></Form.Control>
-                            <br/><br/>
-                        </div>
-                        <div>
-                            <Button onClick={this.Cal_Polynomial_interpolate} style={{width:"7%", margin:"0 auto"}}>
-                                Calculate
-                            </Button>
-                            <br/><br/>
-
-                            <h>Quadratic = </h>
-                            <h style={{color:'green'}} id="Polynomial">  </h>
-                        </div>
-
-                        <br/><br/>
-
-                    </div>
-                    </div>
-                </div>
-            </div>
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr>
+                        <th width="50%">L</th>
+                        <th width="50%">f(x)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data2.map((element, index)=>{
+                        return  (
+                        <tr key={index}>
+                            <td>L{element.Iteration} = {element.L}</td>
+                            <td>{element.Ans}</td>
+                        </tr>)
+                    })}
+                </tbody>
+            </Table>
         );
     }
+
+    const [html, setHtml] = useState(null)
+    const [N,setN] = useState(0)
+    const [Xcal,setXcal] = useState(0)
+    const [X,setX] = useState(0)//เก็บค่า X ที่ผู้ใช้ป้อน
+    const Index = new Array(N);
+
+    const calLagrange = () => {
+        const L = new Array(N);
+        let ans = 0;
+        let obj = {}; 
+        data2.length = 0; 
+      
+        for (let i = 0; i < N; i++) {
+          let up = 1;
+          let down = 1;
+          for (let j = 0; j < N; j++) {
+            if (i !== j) {
+              up *= (X - data[Index[j]].X);
+              down *= (data[Index[i]].X - data[Index[j]].X);
+            }
+          }
+      
+          if (down === 0) {
+            // check diveider
+            console.error("divide not zero");
+            continue;
+          }
+      
+          L[i] = up / down;
+          ans += L[i] * data[Index[i]].Y;
+      
+          obj = { 
+            Iteration: i + 1,
+            L: L[i],
+            Ans: ans
+          };
+          data2.push(obj); 
+        }
+      
+        setXcal(ans); 
+      };
+      
+
+    const inputX = (event) =>{ 
+        console.log(event.target.value) 
+        setX(event.target.value)
+    }
+    const [pointType, setPointType] = useState(""); 
+
+    const calculateRoot = () => {
+        var n = parseInt(N);
+        var Xcalnum = parseFloat(Xcal);
+    
+        let pointType = "";
+    
+        if (n === 2) {
+            pointType = "linear";
+        } else if (n === 3) {
+            pointType = "quadratic";
+        } else {
+            pointType = "polynomial";
+        }
+    
+        for (var i = 0; i < n; i++) {
+            Index[i] = (document.getElementById(i).value) - 1;
+        }
+    
+        console.log(Index);
+        calLagrange(Xcalnum);
+        console.log(data2);
+    
+        setHtml(print());
+        setPointType(pointType); 
+    }
+    
+
+    const createInput=(event)=>{ //ใช้เพื่อให้ gen ช่อง n
+        var InputString="";
+        setN(event.target.value)
+        var Size = event.target.value;
+       
+        for(var i=0;i<Size;i++){
+            InputString+="<input type='number' id='"+i+"' style='width:20%, margin:0 auto'className='form-control'/>"
+            
+        }
+        document.getElementById("NumberInput").innerHTML=InputString;
+    }
+    
+    return (
+            <Container>
+                <h1>Lagrange Interpolation Method</h1>
+                <Table striped bordered hover variant="dark">
+                    <thead>
+                        <tr>
+                            <th width="20%">Position</th>
+                            <th width="40%">X</th>
+                            <th width="40%">Y</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    {data.map((element, index)=>{
+                        return  (
+                        <tr key={index}>
+                            <td>{element.index}</td>
+                            <td>{element.X}</td>
+                            <td>{element.Y}</td>
+                        </tr>)
+                    })}
+                </tbody>
+                </Table>
+                <Container>
+                        <Form>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Input number of point</Form.Label><br></br>
+                                <Form.Label>linear(2 point), quadratic(3 point), polynomial(n point)</Form.Label>
+                                <input type="number" id="N" onChange={createInput} style={{width:"20%", margin:"0 auto"}} className="form-control"></input>
+                            </Form.Group>
+                                <div id="NumberInput"></div>
+                            <br></br>
+                                <Form.Label>Input X</Form.Label>
+                                <input type="number" id="X" onChange={inputX} style={{width:"20%", margin:"0 auto"}} className="form-control"></input>
+                            <br></br>
+                            <Button variant="dark" onClick={calculateRoot}>
+                                Calculate
+                            </Button>
+                        </Form>
+                        <br></br>
+                        <h5>Answer = {Xcal.toPrecision(7)}</h5>
+                        <h5>{N} point is {pointType}</h5> {/* แสดงประเภทของจุดที่ผู้ใช้เลือก */}
+                        <Container>
+                        {html}
+                        </Container>
+                        <Container>
+        <ReactApexChart options={chartOptions} series={series} type="line" height={350} />
+      </Container>
+
+                </Container>
+            </Container> 
+    )
 }
 
-export default Lagrange;
+export default Lagrange
